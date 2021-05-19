@@ -32,20 +32,20 @@ router.get('/review', function (req, res, next) {
 router.get('/addproducts', function (req, res, next) {
   res.render('user/addproducts');
 });
-router.post('/addproducts', (req, res) => {
-  userHelper.addproducts(req.body, (id) => {
-    let image = req.files.image
+router.post('/addproducts',(req,res)=>{
+  userHelper.addproducts(req.body,(id)=>{
+    let image=req.files.Image
     console.log(id)
-    image.mv('./public/productimages/' + id + '.jpg', (err, done) => {
-      if (!err) {
-        res.render("user/addproducts")
-      } else {
+    image.mv('./public/productimages/'+id+'.jpg',(err,done)=>{
+      if(!err){
+        res.render('user/product')
+      }else{
         console.log(err);
       }
     })
-
+    
   })
-});
+})
 module.exports = router;
 
 
